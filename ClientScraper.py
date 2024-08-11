@@ -36,9 +36,9 @@ class cfscraper:
                     elif err.response.status_code == 503:
                         logger.error("Erro 503: Service unavailable.")
                     else:
-                        logger.error(f"HTTP error occurred: {err}")
+                        logger.error("HTTP error occurred: {0}".format(err))
             else:
-                logger.error(f"HTTP error occurred: {err}")
+                logger.error("HTTP error occurred: {0}".format(err))
         except Exception as e:
             try:
                 res = sess.get(proxy_url, headers=headers, cookies=cookies, allow_redirects=allow_redirects, timeout=timeout)
@@ -50,9 +50,10 @@ class cfscraper:
                 elif err.response.status_code == 503:
                     logger.error("Erro 503: Service unavailable.")
                 else:
-                    logger.error(f"HTTP error occurred: {err}")
+                    logger.error("HTTP error occurred: {0}".format(err))
             except Exception as e:
-                logger.error(f"HTTP error occurred: {e}")        
+                logger.error("HTTP error occurred: {0}".format(e)) 
+                       
         return None
 
     @classmethod
@@ -83,9 +84,9 @@ class cfscraper:
                     elif err.response.status_code == 503:
                         logger.error("Erro 503: Service unavailable.")
                     else:
-                        logger.error(f"HTTP error occurred: {err}")
+                        logger.error("HTTP error occurred: {0}".format(err))
             else:
-                logger.error(f"HTTP error occurred: {err}")
+                logger.error("HTTP error occurred: {0}".format(err))
         except Exception as e:
             try:
                 if data:
@@ -100,8 +101,9 @@ class cfscraper:
                 elif err.response.status_code == 503:
                     logger.error("Erro 503: Service unavailable.")
                 else:
-                    logger.error(f"HTTP error occurred: {err}")
+                    logger.error("HTTP error occurred: {0}".format(err))
             except Exception as e:
-                logger.error(f"HTTP error occurred: {e}")
+                logger.error("HTTP error occurred: {0}".format(e))
         return None 
                                 
+
