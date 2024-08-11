@@ -1,7 +1,7 @@
 import requests
 import logging
 
-# Configurando o logger
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(message)s'
@@ -105,4 +105,3 @@ class cfscraper:
             except Exception as e:
                 logger.error(f"HTTP error occurred: {e}") 
                                 
-
