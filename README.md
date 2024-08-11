@@ -4,6 +4,7 @@ client scraper in python
 ## Requirements
 
 python 2.7+
+
 requests
 
 ## Example:
