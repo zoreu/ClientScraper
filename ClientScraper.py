@@ -17,6 +17,7 @@ class cfscraper:
     @classmethod
     def get(cls, url, headers={}, timeout=None, allow_redirects=True, cookies={}):
         sess = cls.session
+        proxy_url = PROXY + url
         if not headers:
             headers = {'User-Agent': USER_AGENT}
         try:
@@ -24,8 +25,7 @@ class cfscraper:
             res.raise_for_status()            
             return res
         except requests.exceptions.HTTPError as err:
-            if err.response.status_code in [403, 503]:
-                proxy_url = PROXY + url
+            if err.response.status_code in [403, 503]:                
                 try:
                     res = sess.get(proxy_url, headers=headers, cookies=cookies, allow_redirects=allow_redirects, timeout=timeout)
                     res.raise_for_status()            
@@ -40,7 +40,6 @@ class cfscraper:
             else:
                 logger.error(f"HTTP error occurred: {err}")
         except Exception as e:
-            proxy_url = PROXY + url
             try:
                 res = sess.get(proxy_url, headers=headers, cookies=cookies, allow_redirects=allow_redirects, timeout=timeout)
                 res.raise_for_status()            
@@ -59,6 +58,7 @@ class cfscraper:
     @classmethod
     def post(cls, url, headers={}, timeout=None, data=None, json=None, allow_redirects=True):
         sess = cls.session
+        proxy_url = PROXY + url
         if not headers:
             headers = {'User-Agent': USER_AGENT}
         try:
@@ -70,7 +70,6 @@ class cfscraper:
             return res
         except requests.exceptions.HTTPError as err:
             if err.response.status_code in [403, 503]:
-                proxy_url = PROXY + url
                 try:
                     if data:
                         res = sess.post(proxy_url, headers=headers, data=data, allow_redirects=allow_redirects, timeout=timeout)
@@ -105,3 +104,4 @@ class cfscraper:
             except Exception as e:
                 logger.error(f"HTTP error occurred: {e}") 
                                 
+
