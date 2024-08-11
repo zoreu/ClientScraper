@@ -53,7 +53,7 @@ class cfscraper:
                     logger.error(f"HTTP error occurred: {err}")
             except Exception as e:
                 logger.error(f"HTTP error occurred: {e}")        
-        return None  # Retorna None em caso de erro
+        return None
 
     @classmethod
     def post(cls, url, headers={}, timeout=None, data=None, json=None, allow_redirects=True):
@@ -102,6 +102,6 @@ class cfscraper:
                 else:
                     logger.error(f"HTTP error occurred: {err}")
             except Exception as e:
-                logger.error(f"HTTP error occurred: {e}") 
+                logger.error(f"HTTP error occurred: {e}")
+        return None 
                                 
-
